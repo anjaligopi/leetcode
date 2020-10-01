@@ -1,7 +1,24 @@
 import pytest
 from typing import List
 
+"""
+Question:
 
+Given m arrays, and each array is sorted in ascending order. Now you can pick up two integers from two different arrays 
+(each array picks one) 
+and calculate the distance. We define the distance between two integers a and b to be their absolute difference |a-b|. 
+Your task is to find the maximum distance.
+
+Example 1:
+Input: 
+[[1,2,3],
+ [4,5],
+ [1,2,3]]
+Output: 4
+Explanation: 
+One way to reach the maximum distance 4 is to pick 1 in the first or third array and pick 5 in the second array.
+
+"""
 class Solution:
     def max_distance_brute_force(self, arrays: List[List[int]]) -> int:
 
@@ -70,7 +87,14 @@ def test_max_distance(arr, ans):
     sol2 = Solution()
     assert sol2.max_distance(arr) == ans
 
-# Run using pytest daily_coding_challenge/october_2020/maximum_distance_in_arrays_624.py --maxfail=3 
+# Run using pytest daily_coding_challenge/october_2020/maximum_distance_in_arrays_624.py --maxfail=4
 # (exits only after two failed cases,
 # this ensures that all test cases are run).
 # 1 more than the num of failing cases for everything to run :)
+"""
+Example output:
+aily_coding_challenge/october_2020/maximum_distance_in_arrays_624.py:34: Failed
+=============================================================================================================== short test summary info ===============================================================================================================
+FAILED daily_coding_challenge/october_2020/maximum_distance_in_arrays_624.py::test_max_distance_brute_force[arr2-99] - Failed: Timeout >3.0s
+============================================================================================================= 1 failed, 5 passed in 4.02s 
+"""
