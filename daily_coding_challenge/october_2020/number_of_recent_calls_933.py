@@ -46,10 +46,13 @@ class RecentCounter:
         return len(self.q)
 
 
-@pytest.mark.parametrize("arr, ans", [( ["RecentCounter","ping","ping","ping","ping"] , [[],[1],[100],[3001],[3002]] )])   
-def test_ping(arr, ans):
+@pytest.mark.parametrize("query, ans", [((["RecentCounter","ping","ping","ping","ping"] , [[],[1],[100],[3001],[3002]]), [None, 1, 2, 3, 3])])   
+def test_ping(query, ans):
     sol1 = RecentCounter()
-    assert sol1.ping(arr) == ans
+    query_func = query[0]
+    query_arg = query[1]
+    for i in range(1, len( query_func)):
+        assert sol1.ping(*query_arg[i]) == ans[i]
 
 
         
@@ -58,3 +61,4 @@ def test_ping(arr, ans):
 # obj = RecentCounter()
 # param_1 = obj.ping(t)
 
+# pytest daily_coding_challenge/october_2020/number_of_recent_calls_933.py --maxfail=4
