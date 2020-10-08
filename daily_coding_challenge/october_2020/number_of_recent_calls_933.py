@@ -45,13 +45,14 @@ class RecentCounter:
         
         return len(self.q)
 
-
+@pytest.mark.timeout(3)
 @pytest.mark.parametrize("query, ans", [((["RecentCounter","ping","ping","ping","ping"] , [[],[1],[100],[3001],[3002]]), [None, 1, 2, 3, 3])])   
 def test_ping(query, ans):
     sol1 = RecentCounter()
     query_func = query[0]
     query_arg = query[1]
     for i in range(1, len( query_func)):
+        # print(*query_arg[i], query_arg[i])
         assert sol1.ping(*query_arg[i]) == ans[i]
 
 
